@@ -57,59 +57,59 @@ Thing: Car Wash
  */
 
 /*
-Thing 1)
+Thing 1) Guitar
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of pickups
+    2) Number of strings
+    3) Logo name 
+    4) Color
+    5) Tuning system
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Vibrate
+    2) Amplify sound
+    3) Consume electricity
  */
 
 /*
-Thing 2)
+Thing 2) Vending mashine
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Amount of candy
+    2) Amount of drinks
+    3) Inserted coins 
+    4) Cooling system
+    5) Tags
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Charge customer
+    2) Feed customer
+    3) Cool down 
  */
 
 /*
-Thing 3)
+Thing 3) Phone
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number of speakers
+    2) Serial number
+    3) Amount of storage
+    4) Phone model
+    5) Camera resolution
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Receive calls
+    2) Receive text messages
+    3) Make noise
  */
 
 /*
-Thing 4)
+Thing 4) TV station
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) Number TV channel chains
+    2) Number of employees
+    3) Number of cameras
+    4) Name of the TV station
+    5) Satelite range
 3 things it can do:
-    1)
-    2)
-    3)
+    1) Broadcast TV channels
+    2) Produce video material
+    3) Receive feedback from viewers
  */
 
 
