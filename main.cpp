@@ -80,81 +80,6 @@ Part1 will be broken up into 5 separate steps
 3) move Thing 5-9 to between your Thing 4 and Thing 10.
 */
 
-/*
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-/*
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
-
-
-
-
-
 
 /*
 Thing 1) Guitar
@@ -210,6 +135,75 @@ Thing 4) TV station
     1) Broadcast TV channels
     2) Produce video material
     3) Receive feedback from viewers
+ */
+/*
+Thing 5) Engine
+5 properties:
+    1) Amount of Fuel intake (float)
+    2) Cylinders (int)
+    3) Compressors (int)
+    4) Oil indicator (bool)
+    5) Piston speed (int)
+3 things it can do:
+    1) Creating motion 
+    2) Convert energy
+    3) Produce heat
+ */
+
+/*
+Thing 6) Wings
+5 properties:
+    1) Panels (int)
+    2) Flaps (int)
+    3) Lamp color (std::string)
+    4) Warning tag text (std::string)
+    5) Ribs (int)
+3 things it can do:
+    1) Fold the panels
+    2) Holds the plane in the air
+    3) Holds the engines
+ */
+
+/*
+Thing 7) Wheels
+5 properties:
+    1) Plugs (int)
+    2) Manufactor text (std::string)
+    3) Amount of air (double)
+    4) Rims (int)
+    5) Weight (int)
+3 things it can do:
+    1) Roll
+    2) Balance the plane on the ground
+    3) Steer the plane on the ground
+ */
+
+/*
+Thing 8) Seats
+5 properties:
+    1) Height in cm (int)
+    2) Width in cm  (int)
+    3) Lifewest (bool)
+    4) Number of seats (int)
+    5) color (std::string)
+3 things it can do:
+    1) Carry passengers 
+    2) Fold back
+    3) Store magazines
+ */
+
+/*
+Thing 9) Brakes
+5 properties:
+    1) Radius in cm (float)
+    2) Weight (int)
+    3) Brake pads (int) 
+    4) Wear indicator (std::string)
+    5) Chassis hardness (float)
+3 things it can do:
+    1) Show how much wear it is on the brakes
+    2) Stop the wheels from moving
+    3) Slow down the airplane gradually
  */
 
 /*
