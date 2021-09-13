@@ -64,31 +64,17 @@ Part1 will be broken up into 5 separate steps
 3) Move the Thing 10 pseudo-code to after your Thing1-4 in the project.
 */
 
-/*
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
- */
-
 
 
 
 /*
 Thing 1) Guitar
 5 properties:
-    1) Number of pickups
-    2) Number of strings
-    3) Logo name 
-    4) Color
-    5) Tuning system
+    1) Number of pickups (int)
+    2) Number of strings (int)
+    3) Logo name (std::string)
+    4) Color (std::string)
+    5) Tuning system (bool)
 3 things it can do:
     1) Vibrate
     2) Amplify sound
@@ -98,11 +84,11 @@ Thing 1) Guitar
 /*
 Thing 2) Vending mashine
 5 properties:
-    1) Amount of candy
-    2) Amount of drinks
-    3) Inserted coins 
-    4) Cooling system
-    5) Tags
+    1) Amount of candy (int)
+    2) Amount of drinks (int)
+    3) Inserted coins  (int)
+    4) Cooling system (bool)
+    5) Tags (std::string)
 3 things it can do:
     1) Charge customer
     2) Feed customer
@@ -112,11 +98,11 @@ Thing 2) Vending mashine
 /*
 Thing 3) Phone
 5 properties:
-    1) Number of speakers
-    2) Serial number
-    3) Amount of storage
-    4) Phone model
-    5) Camera resolution
+    1) Number of speakers (int)
+    2) Serial number (int)
+    3) Amount of storage (double)
+    4) Phone model (std::string)
+    5) Camera resolution (int)
 3 things it can do:
     1) Receive calls
     2) Receive text messages
@@ -126,15 +112,29 @@ Thing 3) Phone
 /*
 Thing 4) TV station
 5 properties:
-    1) Number TV channel chains
-    2) Number of employees
-    3) Number of cameras
-    4) Name of the TV station
-    5) Satelite range
+    1) Number TV channel chains (int)
+    2) Number of employees (int)
+    3) Number of cameras (int)
+    4) Name of the TV station (std::string)
+    5) Satelite range (float)
 3 things it can do:
     1) Broadcast TV channels
     2) Produce video material
     3) Receive feedback from viewers
+ */
+
+/*
+Thing 10) Airplane
+5 properties:
+    1) Engine
+    2) Wings
+    3) Wheels
+    4) Seats
+    5) Brakes
+3 things it can do:
+    1) Fly in the air
+    2) Drive on the ground
+    3) Brake
  */
 
 
