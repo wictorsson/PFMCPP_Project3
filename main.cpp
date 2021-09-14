@@ -150,7 +150,40 @@ Thing 1) Guitar
     2) Amplify sound
     3) Consume electricity
  */
+struct Guitar
+{
+    //Number of pickups (int)
+    int numberOfPickups = 2;
+    //Number of strings (int)
+    int numberOfStrings = 6;
+    //Logo name (std::string)
+    std::string logoName = "Gibson";
+    //Color (std::string)
+    std::string color = "Black";
+    //Tuning system (bool)
+    bool tuningSystem = true;
 
+    struct String
+    {
+        std::string winding = "flatwound";
+        std::string manufactor = "Earnie ball";
+        float length = 100;
+        std::string material;
+        int age;
+
+        void breakDown(float pressure, float thickness );
+        void oxide (int age);
+        void kill (int sharpness, float length);
+    };
+
+    //Vibrate
+    void vibrate(String string);
+    //Amplify sound
+    void amplify(bool guitarPluggedIn, int howLoud);
+    //Consume electricity
+    float electricity(float time);
+
+};
 /*
 Thing 2) Vending mashine
 5 properties:
@@ -164,7 +197,26 @@ Thing 2) Vending mashine
     2) Feed customer
     3) Cool down 
  */
+struct VendingMashine
+{
+    //Amount of candy (int)
+    int amountOfCandy = 50;
+    //Amount of drinks (int)
+    int amountOfDrinks = 50;
+    //Inserted coins  (int)
+    int InsertedCoins = 100;
+    //Cooling system (bool)
+    bool coolingSystem = true;
+    //Tags (std::string)
+    std::string itemTag = "Orego";
 
+    //Charge customer
+    float chargeCustomer(bool creditcard);
+    //Feed customer
+    void feedCustomer(int amountOfCandy);
+    //Cool down 
+    void coolDownMashine(int temperature, int duration);
+};
 /*
 Thing 3) Phone
 5 properties:
@@ -178,7 +230,27 @@ Thing 3) Phone
     2) Receive text messages
     3) Make noise
  */
+struct Phone
+{
+    //Number of speakers (int)
+    int numberOfSpeaker = 2;
+    //Serial number (int)
+    int serialNumber = 13431413;
+    //Amount of storage (double)
+    double storage = 34.3434332;
+    //Phone model (std::string)
+    std::string model = "genX";
+    //Camera resolution (int)
+    int cameraResolution = 12;
+   
+    //Receive calls
+    void receiveCall(bool isPhoneMuted);
+    //Receive text messages
+    std::string receiveText(bool receiveTextEnabled);
+    //Make noise
+    void makeNoise(int numberOfSpeaker, int volume);
 
+};
 /*
 Thing 4) TV station
 5 properties:
@@ -192,6 +264,40 @@ Thing 4) TV station
     2) Produce video material
     3) Receive feedback from viewers
  */
+ struct TVStation
+{
+    //Number TV channel chains (int)
+    int channelChains = 24;
+    //Number of employees (int)
+    int numberOfEmployees = 202;
+    //Number of cameras (int)
+    int numberOfCameras = 12;
+    //Name of the TV station (std::string)
+    std::string tvStationName = "Nickelodeon";
+    //Satelite range (float)
+    float sateliteRange = 180.0f;
+
+    struct Studio
+    {
+        bool isNewsStudio = false;
+        int lightbulbs = 1000;
+        bool isOnAir = false;
+        int cameras = 5;
+        float size = 100;
+
+        void transmitVideo(bool cameraIsOn);
+        void transmitAudio(bool microphone);
+        bool getOnAirStatus(bool isCameraOn);
+
+    };
+    //Broadcast TV channels
+    void broadcastChannel(std::string channel);
+    //Produce video material
+    void produceVideo(Studio studio);
+    //Receive feedback from viewers
+    std::string getFeedback(int date);
+
+};
 /*
 Thing 5) Engine
 5 properties:
@@ -205,7 +311,27 @@ Thing 5) Engine
     2) Convert energy
     3) Produce heat
  */
+ struct Engine
+{
+    //Amount of Fuel intake (float)
+    float fuelIntake = 10000.0f;
+    //Cylinders (int)
+    int cylinders = 12;
+    //Compressors (int)
+    int compressors = 5;
+    //Oil indicator (bool)
+    bool oilIndicator = true;
+    //Piston speed (int)
+    int pistonSpeed = 45;
 
+    //Creating motion 
+    void createMotion(float speed);
+    //Convert energy
+    void convertEnergy(float time, float duration);
+    //Produce heat
+    void produceHeat(bool oilIndicator);
+
+};
 /*
 Thing 6) Wings
 5 properties:
@@ -219,7 +345,26 @@ Thing 6) Wings
     2) Holds the plane in the air
     3) Holds the engines
  */
+ struct Wings
+{
+    //Panels (int)
+    int panels = 10;
+    //Flaps (int)
+    int flaps = 20;
+    //Lamp color (std::string)
+    std::string lampColor = "green";
+    //Warning tag text (std::string)
+    std::string tagText= "SAS";
+    //Ribs (int)
+    int ribs = 40;
 
+    //Fold the panels
+    void foldPanels(int panels);
+    //Holds the plane in the air
+    void holdPlaneUp(float planeWeight);
+    //Holds the engines
+    void holdTheEngines(float engineWeight);
+};
 /*
 Thing 7) Wheels
 5 properties:
@@ -228,12 +373,34 @@ Thing 7) Wheels
     3) Amount of air (double)
     4) Rims (int)
     5) Weight (int)
+    
 3 things it can do:
     1) Roll
     2) Balance the plane on the ground
     3) Steer the plane on the ground
  */
+ struct Wheels
+{
+    //Plugs (int)
+    int plugs = 10;
+    //Manufactor text (std::string)
+    std::string manufactor = "Goodyear";
+    //Amount of air (double)
+    double amountOfAir = 1000000.000;
+    //Rims (int)
+    int rims = 10;
+    //Weight (int)
+    int wheelWeight = 100;
 
+    //Roll
+    void startRolling(bool forward, float speed);
+    //Balance the plane on the ground
+    void balancePlain(float plainWeight);
+    //Steer the plane on the ground
+    void turnTheWheel(std::string direction);
+ 
+
+};
 /*
 Thing 8) Seats
 5 properties:
@@ -247,7 +414,27 @@ Thing 8) Seats
     2) Fold back
     3) Store magazines
  */
+struct Seats
+{
+    //Height in cm (int)
+    int seatHeight = 100;
+    //Width in cm  (int)
+    int seatWidth = 50;
+    //Lifewest (bool)
+    bool lifeWest = false;
+    //Number of seats (int)
+    int numberOfSeats = 500; 
+    //color (std::string)
+    std::string seatColor = "grey";
 
+    //Carry passengers 
+    void carryPassangers(int numberOfseats, float passengersWeight);
+    //Fold back
+    void foldBack(int seatHeight);
+    //Store magazines
+    void store(int numberOfmagazines);
+
+};
 /*
 Thing 9) Brakes
 5 properties:
@@ -261,7 +448,27 @@ Thing 9) Brakes
     2) Stop the wheels from moving
     3) Slow down the airplane gradually
  */
+struct Brakes
+{
+    //Radius in cm (float)
+    float brakeRadius = 20.5f;
+    //Weight (int)
+    int brakeWeight = 20; 
+    //Brake pads (int)
+    int brakePads = 10; 
+    //Wear indicator (std::string)
+    std::string wearIndicator = "bad";
+    //Chassis hardness (float)
+    float chassisHardness = 24.5f;
 
+    //Show how much wear it is on the brakes
+    std::string showWear(std::string wearIndicator);
+    //Stop the wheels from moving
+    void stop(float time);
+    //Slow down the airplane gradually
+    void decelerate(float duration);
+
+};
 /*
 Thing 10) Airplane
 5 properties:
@@ -275,7 +482,27 @@ Thing 10) Airplane
     2) Drive on the ground
     3) Brake
  */
+struct Airplane
+{
+    //Engine
+    Engine engine;
+    //Wings
+    Wings wings;
+    //Wheels
+    Wheels wheels;
+    //Seats
+    Seats seats;
+    //Brakes
+    Brakes brakes;
 
+    //Fly in the air
+    void fly(std::string destination, float speed);
+    //Drive on the ground
+    void driveOnGround(bool isAttached);
+    //Brake
+    void brake(bool isFlying);
+
+};
 
 
 /*
