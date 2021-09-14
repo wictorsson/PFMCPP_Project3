@@ -264,7 +264,7 @@ Thing 4) TV station
     2) Produce video material
     3) Receive feedback from viewers
  */
- struct TVStation FIXME: INDENTATION
+struct TVStation
 {
     //Number TV channel chains (int)
     int channelChains = 24;
@@ -311,7 +311,7 @@ Thing 5) Engine
     2) Convert energy
     3) Produce heat
  */
- struct Engine FIXME: INDENTATION
+struct Engine 
 {
     //Amount of Fuel intake (float)
     float fuelIntake = 10000.0f;
@@ -345,7 +345,7 @@ Thing 6) Wings
     2) Holds the plane in the air
     3) Holds the engines
  */
- struct Wings FIXME: INDENTATION
+struct Wings
 {
     //Panels (int)
     int panels = 10;
@@ -379,7 +379,7 @@ Thing 7) Wheels
     2) Balance the plane on the ground
     3) Steer the plane on the ground
  */
- struct Wheels FIXME: INDENTATION
+struct Wheels
 {
     //Plugs (int)
     int plugs = 10;
