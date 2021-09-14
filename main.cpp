@@ -495,7 +495,7 @@ struct Airplane
     //Brakes
     Brakes brakes;
 
-    //Fly in the air
+    //Fly in the air.
     void fly(std::string destination, float speed);
     //Drive on the ground
     void driveOnGround(bool isAttached);
