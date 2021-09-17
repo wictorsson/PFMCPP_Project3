@@ -649,10 +649,7 @@ std::string Brakes::showWear(std::string wearDisplay)
     {
         return "replace the brakes";
     }
-    else
-    {
-        return "brakes are fine";
-    }
+    return "brakes are fine";  
 }
 
 void Brakes::stop(float time)
