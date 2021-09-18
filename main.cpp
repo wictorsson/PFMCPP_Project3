@@ -200,7 +200,7 @@ void Guitar::String::oxide(int ageMonths)
 
 void Guitar::String::kill(int sharpness, float lengthCm)
 {
-    if(sharpness > 10 & lengthCm > 100)
+    if(sharpness > 10 && lengthCm > 100)
     {
         std::cout << "string could be dangerous" << std::endl;
     }
@@ -257,7 +257,7 @@ float VendingMashine::chargeCustomer(bool creditcard, float itemPrice)
 {
     if(!creditcard)
     {
-        return itemPrice-InsertedCoins;           
+        return itemPrice - InsertedCoins;           
     }
     return 0;
 }
@@ -531,7 +531,7 @@ struct Wheels
 
 void Wheels::startRolling(bool forward, float speed)
 {
-    if(forward&&speed > 0)
+    if(forward && speed > 0)
     {
         std::cout << "start rolling forward, speed: " << speed << std::endl;
     }
@@ -642,7 +642,7 @@ struct Brakes
 
 std::string Brakes::showWear(std::string wearDisplay)
 {
-    if(wearDisplay=="need replacement") 
+    if(wearDisplay == "need replacement") 
     {
         return "replace the brakes";
     }
