@@ -186,7 +186,7 @@ void Guitar::String::breakDown(float pressure, float thickness)
 {
     if(pressure > 100 & thickness < 0.9f)
     {
-    std::cout << "High pressure on string: " << pressure << " is breaking the string" << std::endl;
+        std::cout << "High pressure on string: " << pressure << " is breaking the string" << std::endl;
     }
 }
 
@@ -202,7 +202,7 @@ void Guitar::String::kill(int sharpness, float lengthCm)
 {
     if(sharpness > 10 & lengthCm > 100)
     {
-     std::cout << "string could be dangerous" << std::endl;
+        std::cout << "string could be dangerous" << std::endl;
     }
 }
 
@@ -385,13 +385,8 @@ void TVStation::Studio::transmitAudio(bool microphone)
 }
  bool TVStation::Studio::getOnAirStatus(bool isCameraOn)
  {
-    if(isCameraOn)
-    {   
-        isOnAir=true;
-        return true;
-    }
-    isOnAir=false;
-    return false;
+    isOnAir = isCameraOn;
+    return isOnAir;
  }
 
 void TVStation::broadcastChannel(std::string channel)
@@ -399,7 +394,8 @@ void TVStation::broadcastChannel(std::string channel)
     if(channel == "CNN")
     {
         std::cout << channel << std::endl;
-    }else
+    }
+    else
     {
         std::cout << tvStationName << std::endl;
     }
@@ -512,7 +508,8 @@ void holdTheEngines(float engineWeight)
     if(engineWeight < 1000)
     {
         std::cout << "holding the engines" << std::endl;
-    }else
+    }
+    else
     {
         std::cout << "engine is too heavy" << std::endl;
     }
@@ -609,7 +606,7 @@ void Seats::foldBack(int seatsHeight)
     }
     else
     {
-    std::cout << "fold up the seat" << std::endl;
+        std::cout << "fold up the seat" << std::endl;
     }
 
 }
