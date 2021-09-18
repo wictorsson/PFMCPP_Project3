@@ -184,7 +184,7 @@ struct Guitar
 
 void Guitar::String::breakDown(float pressure, float thickness)
 {
-    if(pressure > 100 & thickness < 0.9f)
+    if(pressure > 100 && thickness < 0.9f)
     {
         std::cout << "High pressure on string: " << pressure << " is breaking the string" << std::endl;
     }
