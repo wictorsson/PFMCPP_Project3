@@ -104,7 +104,7 @@ struct Guitar
 
 Guitar::Guitar()
 {
-    std::cout << "Const Guitar"<<std::endl;
+    std::cout << "Const Guitar" << std::endl;
     numberOfPickups = 2;
     numberOfStrings = 6;
     logoName = "Gibson";
@@ -114,7 +114,7 @@ Guitar::Guitar()
 
 Guitar::String::String()
 {
-    std::cout << "Const String"<<std::endl;
+    std::cout << "Const String" << std::endl;
     winding = "flatwound";
     manufactor = "Earnie ball";
     length = 100;
@@ -191,7 +191,7 @@ struct VendingMashine
 
 VendingMashine::VendingMashine()
 {
-    std::cout << "Const VendingMashine"<<std::endl;
+    std::cout << "Const VendingMashine" << std::endl;
     amountOfCandy = 50;
     amountOfDrinks = 50;
     InsertedCoins = 100;
@@ -806,7 +806,7 @@ int main()
     wings.foldPanels(5);
     wings.holdPlaneUp(7);
     wings.holdTheEngines(100);
-    std::cout << "We are flying with "<< wings.tagText << "\n";
+    std::cout << "We are flying with " << wings.tagText << "\n";
     std::cout << std::endl;
 
     Wheels wheels;
