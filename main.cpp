@@ -76,18 +76,19 @@ int main()
 
 struct Guitar
 {
+    Guitar();
+    int numberOfPickups;
+    int numberOfStrings;
+    std::string logoName;
+    std::string color;
+    bool tuningSystem;
     
-    int numberOfPickups = 2;
-    int numberOfStrings = 6;
-    std::string logoName = "Gibson";
-    std::string color = "Black";
-    bool tuningSystem = true;
-
     struct String
     {
-        std::string winding = "flatwound";
-        std::string manufactor = "Earnie ball";
-        float length = 100;
+        String();
+        std::string winding;
+        std::string manufactor;
+        float length;
         std::string material;
         int age;
 
@@ -98,15 +99,32 @@ struct Guitar
 
     void vibrate(String string);
     void amplify(bool guitarPluggedIn, int howLoud);
-    float electricity(float time);
-    
+    float electricity(float time);  
 };
+
+Guitar::Guitar()
+{
+    std::cout << "Const Guitar" << std::endl;
+    numberOfPickups = 2;
+    numberOfStrings = 6;
+    logoName = "Gibson";
+    color = "Black";
+    tuningSystem = true;
+}
+
+Guitar::String::String()
+{
+    std::cout << "Const String" << std::endl;
+    winding = "flatwound";
+    manufactor = "Earnie ball";
+    length = 100;
+}
 
 void Guitar::String::breakDown(float pressure, float thickness)
 {
     if(pressure > 100 && thickness < 0.9f)
     {
-        std::cout << "High pressure on string: " << pressure << " is breaking the string" << std::endl;
+        std::cout << "High pressure on string, it is breaking the string" << std::endl;
     }
 }
 
@@ -136,16 +154,14 @@ void Guitar::vibrate(String string)
 
 void Guitar::amplify(bool guitarPluggedIn, int howLoud)
 {
-    if(guitarPluggedIn)
+    
+    if(guitarPluggedIn && howLoud > 10)
     {
-        if(howLoud > 10)
-        {
-            std::cout << howLoud << std::endl;
-        }
+        std::cout << howLoud << std::endl;
     }
     else
     {
-        std::cout << "Mute amp" << std::endl;
+        std::cout << "Guitar is not plugged in, mute amp" << std::endl;
     }
 }
 
@@ -160,18 +176,28 @@ float Guitar::electricity(float time)
 
 struct VendingMashine
 {
-    
-    int amountOfCandy = 50;
-    int amountOfDrinks = 50;
-    int InsertedCoins = 100;
-    bool coolingSystem = true;
-    std::string itemTag = "Orego";
+    VendingMashine();
+    int amountOfCandy;
+    int amountOfDrinks;
+    int InsertedCoins;
+    bool coolingSystem;
+    std::string itemTag;
 
  
     float chargeCustomer(bool creditcard, float itemPrice);
     void feedCustomer(int amountOfCandy);
     void coolDownMashine(int temperature, int duration);
 };
+
+VendingMashine::VendingMashine()
+{
+    std::cout << "Const VendingMashine" << std::endl;
+    amountOfCandy = 50;
+    amountOfDrinks = 50;
+    InsertedCoins = 100;
+    coolingSystem = true;
+    itemTag = "Orego";
+}
 
 float VendingMashine::chargeCustomer(bool creditcard, float itemPrice)
 {
@@ -186,9 +212,8 @@ void VendingMashine::feedCustomer(int amountOfCandyOrdered)
 {
     if(amountOfCandyOrdered > 0)
     {
-        std::cout << itemTag << std::endl;
-    }
-   
+        std::cout << "Chosen item: " << itemTag << std::endl;
+    }  
 }
 
 void VendingMashine::coolDownMashine(int temperature, int duration)
@@ -200,23 +225,31 @@ void VendingMashine::coolDownMashine(int temperature, int duration)
             std::cout << "cooling down the mashine" << std::endl; 
         }
     }
-
 }
 
 struct Phone
 {
-
-    int numberOfSpeaker = 2;
-    int serialNumber = 13431413;
-    double storage = 34.3434332;
-    std::string model = "genX";
-    int cameraResolution = 12;
+    Phone();
+    int numberOfSpeaker;
+    int serialNumber;
+    double storage;
+    std::string model;
+    int cameraResolution;
   
     void receiveCall(bool isPhoneMuted);
     std::string receiveText(bool receiveTextEnabled, std::string textMessage);
     void makeNoise(int numberOfSpeaker, int volume);
-
 };
+
+Phone::Phone()
+{
+    std::cout << "Const Phone" << std::endl;
+    numberOfSpeaker = 2;
+    serialNumber = 13431413;
+    storage = 34.3434332;
+    model = "genX";
+    cameraResolution = 12; 
+}
 
 void Phone::receiveCall(bool isPhoneMuted)
 {
@@ -224,7 +257,6 @@ void Phone::receiveCall(bool isPhoneMuted)
     {
         std::cout << "Receiving a call" << std::endl;
     }
-
 }
 
 std::string Phone::receiveText(bool receiveTextEnabled, std::string textMessage)
@@ -246,25 +278,25 @@ void Phone::makeNoise(int numberOfSpeakers, int volume)
             volume = 10;
         }
     }
-
 }
 
 struct TVStation
 {
-   
-    int channelChains = 24;
-    int numberOfEmployees = 202;
-    int numberOfCameras = 12;
-    std::string tvStationName = "Nickelodeon";
-    float sateliteRange = 180.0f;
+    TVStation();
+    int channelChains;
+    int numberOfEmployees;
+    int numberOfCameras;
+    std::string tvStationName;
+    float sateliteRange;
 
     struct Studio
     {
-        bool isNewsStudio = false;
-        int lightbulbs = 1000;
-        bool isOnAir = false;
-        int cameras = 5;
-        float size = 100;
+        Studio();
+        bool isNewsStudio;
+        int lightbulbs;
+        bool isOnAir;
+        int cameras;
+        float size;
 
         void transmitVideo(bool cameraIsOn);
         void transmitAudio(bool microphone);
@@ -275,8 +307,26 @@ struct TVStation
     void broadcastChannel(std::string channel);
     void produceVideo(Studio studio);
     std::string getFeedback(int date, std::string feedBack);
-
 };
+
+TVStation::TVStation()
+{
+    std::cout << "Const TVStation" << std::endl;
+    channelChains = 24;
+    numberOfEmployees = 202;
+    numberOfCameras = 12;
+    tvStationName = "Nickelodeon";
+    sateliteRange = 180.0f;
+}
+
+TVStation::Studio::Studio()
+{
+    isNewsStudio = false;
+    lightbulbs = 1000;
+    isOnAir = false;
+    cameras = 5;
+    size = 100;
+}
 
 void TVStation::Studio::transmitVideo(bool cameraIsOn)
 {
@@ -345,18 +395,29 @@ std::string TVStation::getFeedback(int date, std::string feedBack)
 
 struct Engine 
 {
-  
-    float fuelIntake = 10000.0f;
-    int cylinders = 12;
-    int compressors = 5;
-    bool oilIndicator = true;
-    int pistonSpeed = 45;
+    Engine();
+    float fuelIntake;
+    int cylinders;
+    int compressors;
+    bool oilIndicator;
+    int pistonSpeed;
 
     void createMotion(float speed);
     void convertEnergy(float time, float duration);
     void produceHeat(bool oilIndicator);
 
 };
+
+Engine::Engine()
+{
+    std::cout << "Const engine" << std::endl;
+    fuelIntake = 10000.0f;
+    cylinders = 12;
+    compressors = 5;
+    oilIndicator = true;
+    pistonSpeed = 45;
+
+}
 
 void Engine::createMotion(float speed)
 {
@@ -387,19 +448,31 @@ void Engine::produceHeat(bool hasOilIndicator)
 
 }
 struct Wings
-{
-    int panels = 10;
-    int flaps = 20;
-    std::string lampColor = "green";
-    std::string tagText= "SAS";
-    int ribs = 40;
+{   
+    Wings();
+    int panels;
+    int flaps;
+    std::string lampColor;
+    std::string tagText;
+    int ribs;
 
-    void foldPanels(int panels);
-    void holdPlaneUp(float planeWeight);
-    void holdTheEngines(float engineWeight);
+    void foldPanels(int numbPanels);
+    void holdPlaneUp(int planeWeight);
+    void foldPanels2(int numbPanels2);
+    void holdTheEngines(int engineWeight);
 };
 
-void Wings::foldPanels (int numbOfPanels)
+Wings::Wings()
+{   
+    std::cout << "Const wings" << std::endl;
+    panels = 10;
+    flaps = 20;
+    lampColor = "green";
+    tagText= "SAS";
+    ribs = 40;
+
+}
+void Wings::foldPanels(int numbOfPanels)
 {
     if (numbOfPanels > 0)
     {
@@ -410,10 +483,9 @@ void Wings::foldPanels (int numbOfPanels)
         std::cout << "No panels to fold" << std::endl;
     }
 }
-
-void holdPlaneUp(float planeWeight)
+void Wings::holdPlaneUp(int planeWeight)
 {
-    if(planeWeight < 100000)
+    if (planeWeight > 1000)
     {
         std::cout << "holding the plane in the air" << std::endl;
     }
@@ -423,31 +495,41 @@ void holdPlaneUp(float planeWeight)
     }
 }
 
-void holdTheEngines(float engineWeight)
+void Wings::holdTheEngines(int engineWeight)
 {
-    if(engineWeight < 1000)
+    if (engineWeight > 1000)
     {
         std::cout << "holding the engines" << std::endl;
     }
     else
     {
-        std::cout << "engine is too heavy" << std::endl;
+        std::cout << "engines are too heavy" << std::endl;
     }
-
 }
 struct Wheels
 {
-    int plugs = 10;
-    std::string manufactor = "Goodyear";
-    double amountOfAir = 1000000.000;
-    int rims = 10;
-    int wheelWeight = 100;
-
+    Wheels();
+    int plugs;
+    std::string manufactor;
+    double amountOfAir;
+    int rims;
+    int wheelWeight;
 
     void startRolling(bool forward, float speed);
     void balancePlane(float planeWeight);
     void turnTheWheel(std::string direction);
 };
+
+Wheels::Wheels()
+{
+    std::cout << "Const wheels" << std::endl;
+    plugs = 10;
+    manufactor = "Goodyear";
+    amountOfAir = 1000000.000;
+    rims = 10;
+    wheelWeight = 100;
+
+}
 
 void Wheels::startRolling(bool forward, float speed)
 {
@@ -475,7 +557,7 @@ void Wheels::balancePlane(float planeWeight)
 
 void Wheels::turnTheWheel(std::string direction)
 {
-    if(direction == "Forward")
+    if(direction == "forward")
     {
         std::cout << "going forward" << std::endl;
     }
@@ -492,18 +574,27 @@ void Wheels::turnTheWheel(std::string direction)
 }
 struct Seats
 {
-
-    int seatHeight = 100;
-    int seatWidth = 50;
-    bool lifeWest = false;
-    int numberOfSeats = 500; 
-    std::string seatColor = "grey";
+    Seats();
+    int seatHeight;
+    int seatWidth;
+    bool lifeWest;
+    int numberOfSeats; 
+    std::string seatColor;
 
     void carryPassangers(int numberOfseats, float passengersWeight);
     void foldBack(int seatHeight);
     void store(int numberOfmagazines);
-
 };
+
+Seats::Seats()
+{
+    std::cout << "Const seats" << std::endl;
+    seatHeight = 100;
+    seatWidth = 50;
+    lifeWest = false;
+    numberOfSeats = 500; 
+    seatColor = "grey";
+}
 
 void Seats::carryPassangers(int numberOfseats, float passengersWeight)
 {
@@ -515,7 +606,6 @@ void Seats::carryPassangers(int numberOfseats, float passengersWeight)
     {
         std::cout << "passengers weight - too heavy" << std::endl;
     }
-
 }
 
 void Seats::foldBack(int seatsHeight)
@@ -528,7 +618,6 @@ void Seats::foldBack(int seatsHeight)
     {
         std::cout << "fold up the seat" << std::endl;
     }
-
 }
 
 void Seats::store(int numberOfmagazines)
@@ -542,23 +631,30 @@ void Seats::store(int numberOfmagazines)
         std::cout << "do not store the magazines" << std::endl;
     }
 
-
 }
 struct Brakes
 {
-
-    float brakeRadius = 20.5f;
-    int brakeWeight = 20; 
-    int brakePads = 10; 
-    std::string wearIndicator = "bad";
-    float chassisHardness = 24.5f;
-
+    Brakes();
+    float brakeRadius;
+    int brakeWeight; 
+    int brakePads; 
+    std::string wearIndicator;
+    float chassisHardness;
 
     std::string showWear(std::string wearIndicator);
     void stop(float time);
     void decelerate(float duration);
-
 };
+
+Brakes::Brakes()
+{   
+    std::cout << "Const brakes" << std::endl;
+    brakeRadius = 20.5f;
+    brakeWeight = 20; 
+    brakePads = 10; 
+    wearIndicator = "bad";
+    chassisHardness = 24.5f;
+}
 
 std::string Brakes::showWear(std::string wearDisplay)
 {
@@ -581,25 +677,29 @@ void Brakes::decelerate(float duration)
 {
     for(int i = 0; i < duration; i++)
     {
-        std::cout << "decelerate" << std::endl; 
+        std::cout << "speeding down the plane "<< i << std::endl; 
     }
+    std::cout << "done, standing still" << std::endl;
 }
 
 struct Airplane
 {
- 
+    Airplane();
     Engine engine;
     Wings wings;
     Wheels wheels;
     Seats seats;
     Brakes brakes;
 
- 
     void fly(std::string destination, float speed);
     void driveOnGround(bool isAttached);
     void brake(bool isFlying);
-
 };
+
+Airplane::Airplane()
+{
+    std::cout << "Const airplane" << std::endl;
+}
 
 void Airplane::fly(std::string destination, float speed)
 {
@@ -611,7 +711,6 @@ void Airplane::fly(std::string destination, float speed)
     {
         std::cout << "Standing still" << std::endl;
     }
-
 }
 
 void Airplane::driveOnGround(bool isAttached)
@@ -636,7 +735,6 @@ void Airplane::brake(bool isFlying)
     {
         std::cout << "Releasing the brakes" << std::endl;
     }
-
 }
 
 /*
@@ -657,6 +755,87 @@ void Airplane::brake(bool isFlying)
 int main()
 {
     Example::main();
+
+    std::cout << std::endl;
+    Guitar guitar;
+    Guitar::String string;
+    guitar.vibrate(string);
+    guitar.amplify(true, 10);
+    guitar.electricity(50);
+    std::cout << "Is this a 6 stringed guitar? " << (guitar.numberOfStrings == 6 ? "Yes" : "No") << "\n";
+    string.breakDown(200,0.1f);
+    string.oxide(6);
+    string.kill(5,5.5f);
+    std::cout << "Is the string short ? " << (string.length <= 6 ? "Yes" : "No") << "\n";
+    std::cout << std::endl;
+
+    VendingMashine vMachine;
+    vMachine.chargeCustomer(true, 5.5f);
+    vMachine.feedCustomer(2);
+    vMachine.coolDownMashine(25, 200);
+    std::cout << "Do we need to refill drinks? " << (vMachine.amountOfCandy > vMachine.amountOfDrinks ? "Yes" : "No") << "\n";
+    std::cout << std::endl;
+
+    Phone phone;
+    phone.receiveCall(false);
+    phone.receiveText(true, "this is a text");
+    phone.makeNoise(2,10);
+    std::cout << "This phone has "<< phone.numberOfSpeaker << " speakers" << "\n";
+    std::cout << std::endl;
+
+    TVStation tvStation;
+    TVStation::Studio studio;
+    tvStation.broadcastChannel("CNN");
+    tvStation.produceVideo(studio);
+    tvStation.getFeedback(10,"Nice show");
+    std::cout << "Station has "<< tvStation.numberOfCameras << " cameras" << "\n";
+    studio.transmitVideo(true);
+    studio.transmitAudio(true);
+    studio.getOnAirStatus(false);
+    std::cout << "Enough cameras in the newsroom? " << (studio.cameras > 0 && studio.isNewsStudio ? "Yes" : "No") << "\n";
+    std::cout << std::endl;
+
+    Engine engine;
+    engine.createMotion(20.0f);
+    engine.convertEnergy(30.2f, 20.9f);
+    engine.produceHeat(true);
+    std::cout << "Engine has "<< engine.cylinders << " cylinders" << "\n";
+    std::cout << std::endl;
+
+    Wings wings;
+    wings.foldPanels(5);
+    wings.holdPlaneUp(7);
+    wings.holdTheEngines(100);
+    std::cout << "We are flying with " << wings.tagText << "\n";
+    std::cout << std::endl;
+
+    Wheels wheels;
+    wheels.startRolling(true, 100.9f);
+    wheels.balancePlane(10.0f);
+    wheels.turnTheWheel("left");
+    std::cout << "We are rolling with "<< wheels.manufactor << "\n";
+    std::cout << std::endl;
+
+    Seats seats;
+    seats.carryPassangers(300,2000);
+    seats.foldBack(150);
+    seats.store(10);
+    std::cout << "Seat color "<< seats.seatColor << "\n";
+    std::cout << std::endl;
+
+    Brakes brakes;
+    brakes.showWear("new");
+    brakes.stop(10.0f);
+    brakes.decelerate(10.0f);
+    std::cout << "Wear indicator status: "<< brakes.wearIndicator << "\n";
+    std::cout << std::endl;
+
+    Airplane airplane;
+    airplane.fly("London", 1000);
+    airplane.driveOnGround(true);
+    airplane.brake(false);
+    std::cout << (airplane.seats.lifeWest && airplane.wings.lampColor == "green" ? "Safe to fly" : "Not safe to fly") << "\n";
     
+
     std::cout << "good to go!" << std::endl;
 }
