@@ -110,7 +110,7 @@ void Guitar::String::stringAgeUntilBreakdown(int ageLimit)
     int newString = 0;
     while(newString < ageLimit)
     {   
-        newString ++;
+        ++ newString;
         std::cout << "String age is increasing " << newString << std::endl;
     }
     std::cout << "String is too old " << std::endl;
@@ -199,7 +199,7 @@ float VendingMashine::purchaseWithFiftyCents(float coinValue, int itemPrice)
 {
     while(insertedCoins < itemPrice)
     {           
-        insertedCoins = insertedCoins + coinValue;
+        insertedCoins += coinValue;
         std::cout << "Inserting cash: " << insertedCoins << std::endl;
     }
     std::cout << "Item price reached" << std::endl;
@@ -210,7 +210,7 @@ float VendingMashine::chargeCustomer(bool creditcard, float itemPrice)
 {
     if(!creditcard)
     {
-        return itemPrice -insertedCoins;           
+        return itemPrice - insertedCoins;           
     }
     return 0;
 }
@@ -329,7 +329,7 @@ void TVStation::Studio::distributeLamps(int lampsPerRoom)
     int roomNumber = 1;
     while(roomNumber < totalNumbOfRooms)
     {
-       roomNumber ++; 
+       ++ roomNumber; 
        lightbulbs -= lampsPerRoom; 
        std::cout << "Amount of lightbulbs left: " << lightbulbs << std::endl;
     }  
@@ -494,7 +494,7 @@ void Wings::demountPanels(int numbOfPanelsToKeep)
 {
     while(panels > numbOfPanelsToKeep)
     {
-        panels --;
+        -- panels;
         std::cout << "Panels left: " << panels << std::endl;
     }
 } 
@@ -624,7 +624,7 @@ void Seats::addSeats(int maxSeats)
 {
     for(int i = 0; i < maxSeats; i ++ )
     {
-        numberOfSeats ++ ;
+        ++ numberOfSeats;
         std::cout << "Added a seat" << std::endl;
     }
     std::cout << "Total no of seats: " << numberOfSeats  << std::endl;
