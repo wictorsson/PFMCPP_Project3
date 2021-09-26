@@ -142,7 +142,7 @@ void Guitar::String::kill(int sharpness, float lengthCm)
 
 void Guitar::reStringGuitar(int startingVal)
 {
-    for(int i = startingVal; i < numberOfStrings; i ++) FIXME: use pre increment, not post increment
+    for(int i = startingVal; i < numberOfStrings; ++ i)
     {
         std::cout << "Restringing the " << i + 1 << "th string" << std::endl;
     }
@@ -227,7 +227,7 @@ void VendingMashine::coolDownMashine(int temperature, int duration)
 {
     if(temperature > 30)
     {
-        for(int i = 0; i < duration; i ++) FIXME: use pre increment, not post increment
+        for(int i = 0; i < duration; ++ i) 
         {
             std::cout << "cooling down the mashine" << std::endl; 
         }
@@ -253,7 +253,7 @@ Phone::Phone() : model("genX"), cameraResolution(12) {}
 
 void Phone::generateNewSerialNumbers(int addNumber, int numbOfSerials)
 {
-    for(int i = 0; i < numbOfSerials; i ++) FIXME: use pre increment, not post increment
+    for(int i = 0; i < numbOfSerials; ++ i) 
     {
         serialNumber += addNumber;
         std::cout << "New serialnumber: " << serialNumber << std::endl;
@@ -279,7 +279,7 @@ std::string Phone::receiveText(bool receiveTextEnabled, std::string textMessage)
 void Phone::makeNoise(int numberOfSpeakers, int volume)
 {
     std::cout << "Noise coming from phone with serial number: " << serialNumber << std::endl;
-    for (int i = 0; i < numberOfSpeakers; i ++) FIXME: use pre increment, not post increment
+    for (int i = 0; i < numberOfSpeakers; ++ i) 
     {
         if(volume > 0)
         {
@@ -369,7 +369,7 @@ void TVStation::Studio::transmitAudio(bool microphone)
 
 void TVStation::changeSatelliteRange(float stepSize, bool wider)
 {
-    for(int i = 0; i < 10; i ++) FIXME: use pre increment, not post increment
+    for(int i = 0; i < 10; ++ i) 
     {
         if(wider)
         {
@@ -622,7 +622,7 @@ Seats::Seats() : numberOfSeats(500), seatColor("grey") {}
 
 void Seats::addSeats(int maxSeats)
 {
-    for(int i = 0; i < maxSeats; i ++ ) FIXME: use pre increment, not post increment
+    for(int i = 0; i < maxSeats; ++ i)
     {
         ++ numberOfSeats;
         std::cout << "Added a seat" << std::endl;
@@ -685,7 +685,7 @@ Brakes::Brakes() : wearIndicator("bad"), chassisHardness (24.5f) {}
 
 void Brakes::addPadsToBrake(int padWeight, int amountOfPadsOnBrake)
 {
-    for(int i = 0; i < amountOfPadsOnBrake; i ++) FIXME: use pre increment, not post increment
+    for(int i = 0; i < amountOfPadsOnBrake; ++ i)
     {
         brakeWeight += padWeight;
         std::cout << "Added pad to brake " << std::endl;
@@ -714,7 +714,7 @@ void Brakes::stop(float time)
 
 void Brakes::decelerate(float duration)
 {
-    for(int i = 0; i < duration; i ++) FIXME: use pre increment, not post increment
+    for(int i = 0; i < duration; ++ i)
     {
         std::cout << "speeding down the plane "<< i << std::endl; 
     }
@@ -746,7 +746,7 @@ void Airplane::acceleratePiston(int startSpeed, int maxSpeed)
     engine.pistonSpeed = startSpeed;
     while(engine.pistonSpeed < maxSpeed)
     {
-        engine.pistonSpeed ++;
+        ++ engine.pistonSpeed;
         std::cout << "Speeding up pistons..." << std::endl;
     }
 
