@@ -89,11 +89,13 @@ struct Guitar
         std::string material;
         int age;
 
+        void stringAgeUntilBreakdown(int ageLimit);
         void breakDown(float pressure, float thickness );
         void oxide (int age);
         void kill (int sharpness, float length);
     };
 
+    void reStringGuitar(int startingVal);
     void vibrate(String string);
     void amplify(bool guitarPluggedIn, int howLoud);
     float electricity(float time);  
@@ -102,6 +104,17 @@ struct Guitar
 Guitar::Guitar() : logoName("Gibson"), color("Black"), tuningSystem(true) {} 
 
 Guitar::String::String() : length (100.0f), age (12) {}
+
+void Guitar::String::stringAgeUntilBreakdown(int ageLimit)
+{   
+    int newString = 0;
+    while(newString < ageLimit)
+    {   
+        ++ newString;
+        std::cout << "String age is increasing " << newString << std::endl;
+    }
+    std::cout << "String is too old " << std::endl;
+}
 
 void Guitar::String::breakDown(float pressure, float thickness)
 {
@@ -127,6 +140,14 @@ void Guitar::String::kill(int sharpness, float lengthCm)
     }
 }
 
+void Guitar::reStringGuitar(int startingVal)
+{
+    for(int i = startingVal; i < numberOfStrings; ++ i)
+    {
+        std::cout << "Restringing the " << i + 1 << "th string" << std::endl;
+    }
+
+}
 void Guitar::vibrate(String string)
 {
     if(string.length > 0.1f)
@@ -162,23 +183,34 @@ struct VendingMashine
     VendingMashine();
     int amountOfCandy = 50;
     int amountOfDrinks = 50;
-    int InsertedCoins;
+    float insertedCoins;
     bool coolingSystem;
     std::string itemTag;
 
- 
+    float purchaseWithFiftyCents(float coinValue,int itemPrice);
     float chargeCustomer(bool creditcard, float itemPrice);
     void feedCustomer(int amountOfCandy);
     void coolDownMashine(int temperature, int duration);
 };
 
-VendingMashine::VendingMashine() : InsertedCoins(100), coolingSystem(true), itemTag("Orego") {}
+VendingMashine::VendingMashine() : insertedCoins(10), coolingSystem(true), itemTag("Orego") {}
+
+float VendingMashine::purchaseWithFiftyCents(float coinValue, int itemPrice)
+{
+    while(insertedCoins < itemPrice)
+    {           
+        insertedCoins += coinValue;
+        std::cout << "Inserting cash: " << insertedCoins << std::endl;
+    }
+    std::cout << "Item price reached" << std::endl;
+    return insertedCoins;
+}
 
 float VendingMashine::chargeCustomer(bool creditcard, float itemPrice)
 {
     if(!creditcard)
     {
-        return itemPrice - InsertedCoins;           
+        return itemPrice - insertedCoins;           
     }
     return 0;
 }
@@ -195,7 +227,7 @@ void VendingMashine::coolDownMashine(int temperature, int duration)
 {
     if(temperature > 30)
     {
-        for(int i = 0; i < duration; i++)
+        for(int i = 0; i < duration; ++ i) 
         {
             std::cout << "cooling down the mashine" << std::endl; 
         }
@@ -210,7 +242,8 @@ struct Phone
     double storage = 34.3434332;
     std::string model;
     int cameraResolution;
-  
+    
+    void generateNewSerialNumbers(int addNumber, int numbOfSerials);
     void receiveCall(bool isPhoneMuted);
     std::string receiveText(bool receiveTextEnabled, std::string textMessage);
     void makeNoise(int numberOfSpeaker, int volume);
@@ -218,6 +251,14 @@ struct Phone
 
 Phone::Phone() : model("genX"), cameraResolution(12) {}
 
+void Phone::generateNewSerialNumbers(int addNumber, int numbOfSerials)
+{
+    for(int i = 0; i < numbOfSerials; ++ i) 
+    {
+        serialNumber += addNumber;
+        std::cout << "New serialnumber: " << serialNumber << std::endl;
+    }
+}
 void Phone::receiveCall(bool isPhoneMuted)
 {
     if(!isPhoneMuted)
@@ -238,7 +279,7 @@ std::string Phone::receiveText(bool receiveTextEnabled, std::string textMessage)
 void Phone::makeNoise(int numberOfSpeakers, int volume)
 {
     std::cout << "Noise coming from phone with serial number: " << serialNumber << std::endl;
-    for (int i = 0; i < numberOfSpeakers; i++)
+    for (int i = 0; i < numberOfSpeakers; ++ i) 
     {
         if(volume > 0)
         {
@@ -254,7 +295,7 @@ struct TVStation
     int numberOfEmployees = 202;
     int numberOfCameras = 12;
     std::string tvStationName;
-    float sateliteRange;
+    float satelliteRange;
 
     struct Studio
     {
@@ -265,21 +306,35 @@ struct TVStation
         int cameras;
         float size;
 
+        void distributeLamps(int lampsPerRoom);
         void transmitVideo(bool cameraIsOn);
         void transmitAudio(bool microphone);
         bool getOnAirStatus(bool isCameraOn);
-
     };
 
+    void changeSatelliteRange(float steps, bool wider);
     void broadcastChannel(std::string channel);
     void produceVideo(Studio studio);
     std::string getFeedback(int date, std::string feedBack);
 };
 
-TVStation::TVStation() : tvStationName("Nickelodeon"), sateliteRange(180.0f) {}
+TVStation::TVStation() : tvStationName("Nickelodeon"), satelliteRange(180.0f) {}
 
 TVStation::Studio::Studio() : isOnAir(false), cameras(5), size(100) {}
 
+//lamps left??
+void TVStation::Studio::distributeLamps(int lampsPerRoom)
+{
+    int totalNumbOfRooms = 10;
+    int roomNumber = 1;
+    while(roomNumber < totalNumbOfRooms)
+    {
+       ++ roomNumber; 
+       lightbulbs -= lampsPerRoom; 
+       std::cout << "Amount of lightbulbs left: " << lightbulbs << std::endl;
+    }  
+    std::cout << "Amount of lightbulbs left: " << lightbulbs << std::endl;
+}
 
 void TVStation::Studio::transmitVideo(bool cameraIsOn)
 {
@@ -311,6 +366,23 @@ void TVStation::Studio::transmitAudio(bool microphone)
     isOnAir = isCameraOn;
     return isOnAir;
  }
+
+void TVStation::changeSatelliteRange(float stepSize, bool wider)
+{
+    for(int i = 0; i < 10; ++ i) 
+    {
+        if(wider)
+        {
+            satelliteRange += stepSize;
+        }
+        else
+        {
+            satelliteRange -= stepSize;
+        }
+        std::cout << satelliteRange << std::endl;
+    }
+
+}
 
 void TVStation::broadcastChannel(std::string channel)
 {
@@ -354,6 +426,7 @@ struct Engine
     bool oilIndicator;
     int pistonSpeed;
 
+    void fillTank(float loadsOfFuel);
     void createMotion(float speed);
     void convertEnergy(float time, float duration);
     void produceHeat(bool oilIndicator);
@@ -362,6 +435,16 @@ struct Engine
 
 Engine::Engine() : oilIndicator(true), pistonSpeed(45) {}
 
+void Engine::fillTank(float loadsOfFuel)
+{   
+    fuelIntake = 0;
+    while(fuelIntake < 10000.0f)
+    {
+        fuelIntake += loadsOfFuel;
+        std::cout << fuelIntake << std::endl;
+    }
+    std::cout << "Stop refilling " << std::endl;
+}
 void Engine::createMotion(float speed)
 {
     if(speed > 0)
@@ -399,13 +482,22 @@ struct Wings
     std::string tagText;
     int ribs;
 
+    void demountPanels(int numbOfPanelsTodemount);
     void foldPanels(int numbPanels);
     void holdPlaneUp(int planeWeight);
-    void foldPanels2(int numbPanels2);
     void holdTheEngines(int engineWeight);
 };
 
 Wings::Wings() : tagText("SAS"), ribs(40) {}
+
+void Wings::demountPanels(int numbOfPanelsToKeep)
+{
+    while(panels > numbOfPanelsToKeep)
+    {
+        -- panels;
+        std::cout << "Panels left: " << panels << std::endl;
+    }
+} 
 
 void Wings::foldPanels(int numbOfPanels)
 {
@@ -450,12 +542,26 @@ struct Wheels
     int rims;
     int wheelWeight;
 
+    double fillAir(double amountOfAirPerSec, int airLimit);
+    void countWheels( );
     void startRolling(bool forward, float speed);
     void balancePlane(float planeWeight);
     void turnTheWheel(std::string direction);
 };
 
 Wheels::Wheels() : rims(10), wheelWeight(100){}
+
+double Wheels::fillAir(double amountOfAirPerSec, int airLimit)
+{
+    amountOfAir = 0;
+    while(amountOfAir < airLimit)
+    {
+        amountOfAir += amountOfAirPerSec;
+        std::cout << "Filling up air: " << amountOfAir << std::endl;
+    }
+    std::cout << amountOfAir << std::endl;
+    return amountOfAir;  
+}
 
 void Wheels::startRolling(bool forward, float speed)
 {
@@ -495,9 +601,8 @@ void Wheels::turnTheWheel(std::string direction)
     {
         std::cout << "going right" << std::endl;
     }
-
-
 }
+
 struct Seats
 {
     Seats();
@@ -507,12 +612,23 @@ struct Seats
     int numberOfSeats; 
     std::string seatColor;
 
+    void addSeats(int maxSeats);
     void carryPassangers(int numberOfseats, float passengersWeight);
     void foldBack(int seatHeight);
     void store(int numberOfmagazines);
 };
 
 Seats::Seats() : numberOfSeats(500), seatColor("grey") {}
+
+void Seats::addSeats(int maxSeats)
+{
+    for(int i = 0; i < maxSeats; ++ i)
+    {
+        ++ numberOfSeats;
+        std::cout << "Added a seat" << std::endl;
+    }
+    std::cout << "Total no of seats: " << numberOfSeats  << std::endl;
+}
 
 void Seats::carryPassangers(int numberOfseats, float passengersWeight)
 {
@@ -559,12 +675,23 @@ struct Brakes
     std::string wearIndicator;
     float chassisHardness;
 
+    void addPadsToBrake(int padWeight, int amountOfPadsOnBrake);
     std::string showWear(std::string wearIndicator);
     void stop(float time);
     void decelerate(float duration);
 };
 
 Brakes::Brakes() : wearIndicator("bad"), chassisHardness (24.5f) {}
+
+void Brakes::addPadsToBrake(int padWeight, int amountOfPadsOnBrake)
+{
+    for(int i = 0; i < amountOfPadsOnBrake; ++ i)
+    {
+        brakeWeight += padWeight;
+        std::cout << "Added pad to brake " << std::endl;
+    }
+    std::cout << "New brake weight: " << brakeWeight << std::endl;
+}
 
 std::string Brakes::showWear(std::string wearDisplay)
 {
@@ -587,7 +714,7 @@ void Brakes::stop(float time)
 
 void Brakes::decelerate(float duration)
 {
-    for(int i = 0; i < duration; i++)
+    for(int i = 0; i < duration; ++ i)
     {
         std::cout << "speeding down the plane "<< i << std::endl; 
     }
@@ -603,6 +730,7 @@ struct Airplane
     Seats seats;
     Brakes brakes;
 
+    void acceleratePiston(int startSpeed, int maxSpeed);
     void fly(std::string destination, float speed);
     void driveOnGround(bool isAttached);
     void brake(bool isFlying);
@@ -613,6 +741,16 @@ Airplane::Airplane()
     std::cout << "Const airplane" << std::endl;
 }
 
+void Airplane::acceleratePiston(int startSpeed, int maxSpeed)
+{
+    engine.pistonSpeed = startSpeed;
+    while(engine.pistonSpeed < maxSpeed)
+    {
+        ++ engine.pistonSpeed;
+        std::cout << "Speeding up pistons..." << std::endl;
+    }
+
+}
 void Airplane::fly(std::string destination, float speed)
 {
     if(destination == "Stockholm" && speed > 0)
@@ -671,10 +809,12 @@ int main()
     std::cout << std::endl;
     Guitar guitar;
     Guitar::String string;
+    guitar.reStringGuitar(2);
     guitar.vibrate(string);
     guitar.amplify(true, 10);
     guitar.electricity(50);
     std::cout << "Is this a 6 stringed guitar? " << (guitar.numberOfStrings == 6 ? "Yes" : "No") << "\n";
+    string.stringAgeUntilBreakdown(8);
     string.breakDown(200,0.1f);
     string.oxide(6);
     string.kill(5,5.5f);
@@ -682,6 +822,7 @@ int main()
     std::cout << std::endl;
 
     VendingMashine vMachine;
+    vMachine.purchaseWithFiftyCents(0.5f,15);
     vMachine.chargeCustomer(true, 5.5f);
     vMachine.feedCustomer(2);
     vMachine.coolDownMashine(25, 200);
@@ -689,6 +830,7 @@ int main()
     std::cout << std::endl;
 
     Phone phone;
+    phone.generateNewSerialNumbers(10,10);
     phone.receiveCall(false);
     phone.receiveText(true, "this is a text");
     phone.makeNoise(2,10);
@@ -697,10 +839,14 @@ int main()
 
     TVStation tvStation;
     TVStation::Studio studio;
+    std::cout << "Moving the satellite dish "<< "\n";
+    tvStation.changeSatelliteRange(10.5f, true);
     tvStation.broadcastChannel("CNN");
     tvStation.produceVideo(studio);
     tvStation.getFeedback(10,"Nice show");
     std::cout << "Station has "<< tvStation.numberOfCameras << " cameras" << "\n";
+    std::cout << "Distributing lightbulbs" << std::endl;
+    studio.distributeLamps(10);
     studio.transmitVideo(true);
     studio.transmitAudio(true);
     studio.getOnAirStatus(false);
@@ -708,6 +854,8 @@ int main()
     std::cout << std::endl;
 
     Engine engine;
+    std::cout << "Filling up the tank" << std::endl;
+    engine.fillTank(1000.0f);
     engine.createMotion(20.0f);
     engine.convertEnergy(30.2f, 20.9f);
     engine.produceHeat(true);
@@ -715,6 +863,8 @@ int main()
     std::cout << std::endl;
 
     Wings wings;
+    std::cout << "demounting panels" << std::endl;
+    wings.demountPanels(3);
     wings.foldPanels(5);
     wings.holdPlaneUp(7);
     wings.holdTheEngines(100);
@@ -722,6 +872,8 @@ int main()
     std::cout << std::endl;
 
     Wheels wheels;
+    std::cout << "Filling up with air" << std::endl;
+    wheels.fillAir(1000.000, 10000);
     wheels.startRolling(true, 100.9f);
     wheels.balancePlane(10.0f);
     wheels.turnTheWheel("left");
@@ -729,6 +881,8 @@ int main()
     std::cout << std::endl;
 
     Seats seats;
+    std::cout << "Adding seats" << std::endl;
+    seats.addSeats(5);
     seats.carryPassangers(300,2000);
     seats.foldBack(150);
     seats.store(10);
@@ -736,6 +890,8 @@ int main()
     std::cout << std::endl;
 
     Brakes brakes;
+    std::cout << "adding pads to the brake" << std::endl;
+    brakes.addPadsToBrake(2, 5);
     brakes.showWear("new");
     brakes.stop(10.0f);
     brakes.decelerate(10.0f);
@@ -743,6 +899,8 @@ int main()
     std::cout << std::endl;
 
     Airplane airplane;
+    std::cout << "Starting to accelerate pistons" << std::endl;
+    airplane.acceleratePiston(90, 100);
     airplane.fly("London", 1000);
     airplane.driveOnGround(true);
     airplane.brake(false);
